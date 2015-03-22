@@ -22,10 +22,17 @@ drawChart = ->
   materialOptions =
     theme: 'material'
     chart: title: chart1.key
-    curveType: 'function'
+    # curveType: 'function'
+    lineWidth: 1
     width: 1200
     height: 500 # colors: ['black', 'white', 'orange', 'blue', 'red', 'green', 'grey']
-    explorer: {}
+    explorer: {axis: 'horizontal', maxZoomOut: 1, actions: ['dragToZoom', 'rightClickToReset']}
+    hAxis:
+      gridlines:
+        count: 3
+    vAxis:
+      gridlines:
+        count: 3
     vAxes:
       0: label: chart1.key
       1: label: 'Spread'
