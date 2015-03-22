@@ -1,0 +1,22 @@
+erb:
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+
+  <script src="https://rawgit.com/jashkenas/underscore/master/underscore-min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+
+
+javascript:
+
+  window.spreadsData = #{raw @data.to_json};
+
+.pure-g
+  .pure-u-1-2
+    #material
+
+
+= javascript_include_tag 'spreads.js'
+
+/#chartsapp ng-app="charts"
+/  #charts ng-controller="ChartsController"
+/    linechart data="data" options="options" mode=""
+
