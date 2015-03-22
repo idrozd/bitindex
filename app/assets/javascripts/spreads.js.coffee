@@ -15,28 +15,25 @@ drawChart = ->
 
   raw_data = _(chart1.data).map (row)-> [new Date(row[0] * 1000), row[1], row[2]]
 
-  data.addRows _(raw_data).first(30)
+  data.addRows raw_data
 
 
 
   materialOptions =
+    theme: 'material'
     chart: title: chart1.key
     curveType: 'function'
-    lineWidth: 10
     width: 1200
     height: 500 # colors: ['black', 'white', 'orange', 'blue', 'red', 'green', 'grey']
     explorer: {}
-    axes:
-      x:
-        date: label: 'xueybl'
-      y:
-        "#{chart1.key}": label: chart1.key, baselineColor: 'black', title: 'WHOHOHA'
-        spread: label: 'Spread', gridlines: count: 40
+    vAxes:
+      0: label: chart1.key
+      1: label: 'Spread'
     series:
-      0: color: '#e7711b', axis: "#{chart1.key}", pointColor: 'orange', color: 'orange'
-      1: axis: 'spread', color: 'black', pointSize: 20
+      0: targetAxisIndex: 0, color: 'black'
+      1: targetAxisIndex: 1, color: 'lightgrey'
 
-  materialChart = new google.charts.Line(materialDiv)
+  materialChart = new google.visualization.LineChart(materialDiv)
   materialChart.draw data, materialOptions
 
 
